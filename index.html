@@ -354,8 +354,7 @@
             <a href="#" id="downloadLink" class="download-btn" target="_blank" download>↓ Download</a>
         </div>
     </div>
-
-    <script>
+     <script>
         const API_KEY = "Yes";
         const DEFAULT_ICON = 'https://img.icons8.com/m_rounded/200/FFFFFF/music--v1.png';
 
@@ -368,7 +367,8 @@
         async function fetchCoverForList(spotifyUrl, imgId) {
             try {
                 const targetUrl = `https://zynfx.eu.org/api/spotify?url=${encodeURIComponent(spotifyUrl)}&apikey=${API_KEY}`;
-                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+                // Menggunakan proxy CodeTabs
+                const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
                 
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
@@ -399,7 +399,8 @@
 
             try {
                 const targetUrl = `https://zynfx.eu.org/api/spotifySearch?query=${encodeURIComponent(query)}&apikey=${API_KEY}`;
-                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+                // Menggunakan proxy CodeTabs
+                const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
                 
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
@@ -450,7 +451,8 @@
 
             try {
                 const targetUrl = `https://zynfx.eu.org/api/spotify?url=${encodeURIComponent(spotifyUrl)}&apikey=${API_KEY}`;
-                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+                // Menggunakan proxy CodeTabs
+                const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
                 
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
