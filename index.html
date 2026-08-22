@@ -354,8 +354,8 @@
             <a href="#" id="downloadLink" class="download-btn" target="_blank" download>↓ Download</a>
         </div>
     </div>
-     <script>
-        const API_KEY = "Yes";
+
+    <script>
         const DEFAULT_ICON = 'https://img.icons8.com/m_rounded/200/FFFFFF/music--v1.png';
 
         function handleKeyPress(e) {
@@ -364,13 +364,10 @@
             }
         }
 
+        // Fetch dari Backend Vercel kita sendiri!
         async function fetchCoverForList(spotifyUrl, imgId) {
             try {
-                const targetUrl = `https://zynfx.eu.org/api/spotify?url=${encodeURIComponent(spotifyUrl)}&apikey=${API_KEY}`;
-                // Menggunakan proxy CodeTabs
-                const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
-                
-                const response = await fetch(proxyUrl);
+                const response = await fetch(`/api/proxy?url=${encodeURIComponent(spotifyUrl)}`);
                 const data = await response.json();
 
                 if (data.status === 200 && data.result && data.result.metadata && data.result.metadata.cover) {
@@ -384,6 +381,7 @@
             }
         }
 
+        // Fetch dari Backend Vercel kita sendiri!
         async function searchMusic() {
             const query = document.getElementById('searchInput').value.trim();
             const statusDiv = document.getElementById('status');
@@ -398,11 +396,7 @@
             trackList.innerHTML = "";
 
             try {
-                const targetUrl = `https://zynfx.eu.org/api/spotifySearch?query=${encodeURIComponent(query)}&apikey=${API_KEY}`;
-                // Menggunakan proxy CodeTabs
-                const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
-                
-                const response = await fetch(proxyUrl);
+                const response = await fetch(`/api/proxy?query=${encodeURIComponent(query)}`);
                 const data = await response.json();
 
                 if (data.status === 200 && Array.isArray(data.result) && data.result.length > 0) {
@@ -443,6 +437,7 @@
             }
         }
 
+        // Fetch dari Backend Vercel kita sendiri!
         async function loadTrack(spotifyUrl) {
             const statusDiv = document.getElementById('status');
             const playerBar = document.getElementById('playerBar');
@@ -450,11 +445,7 @@
             statusDiv.innerHTML = "Memuat audio... ⏳";
 
             try {
-                const targetUrl = `https://zynfx.eu.org/api/spotify?url=${encodeURIComponent(spotifyUrl)}&apikey=${API_KEY}`;
-                // Menggunakan proxy CodeTabs
-                const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`;
-                
-                const response = await fetch(proxyUrl);
+                const response = await fetch(`/api/proxy?url=${encodeURIComponent(spotifyUrl)}`);
                 const data = await response.json();
 
                 if (data.status === 200 && data.result && data.result.metadata) {
