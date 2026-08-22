@@ -371,8 +371,7 @@
         async function fetchCoverForList(spotifyUrl, imgId) {
             try {
                 const targetUrl = `https://zynfx.eu.org/api/spotify?url=${encodeURIComponent(spotifyUrl)}&apikey=${API_KEY}`;
-                const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
-                
+                const proxyUrl = `https://thingproxy.freeboard.io/fetch/${targetUrl}`;
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
 
