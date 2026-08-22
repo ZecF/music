@@ -365,11 +365,12 @@
             }
         }
 
-        // FETCH 1: Tanpa Proxy
         async function fetchCoverForList(spotifyUrl, imgId) {
             try {
                 const targetUrl = `https://zynfx.eu.org/api/spotify?url=${encodeURIComponent(spotifyUrl)}&apikey=${API_KEY}`;
-                const response = await fetch(targetUrl);
+                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+                
+                const response = await fetch(proxyUrl);
                 const data = await response.json();
 
                 if (data.status === 200 && data.result && data.result.metadata && data.result.metadata.cover) {
@@ -383,7 +384,6 @@
             }
         }
 
-        // FETCH 2: Tanpa Proxy
         async function searchMusic() {
             const query = document.getElementById('searchInput').value.trim();
             const statusDiv = document.getElementById('status');
@@ -399,7 +399,9 @@
 
             try {
                 const targetUrl = `https://zynfx.eu.org/api/spotifySearch?query=${encodeURIComponent(query)}&apikey=${API_KEY}`;
-                const response = await fetch(targetUrl);
+                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+                
+                const response = await fetch(proxyUrl);
                 const data = await response.json();
 
                 if (data.status === 200 && Array.isArray(data.result) && data.result.length > 0) {
@@ -440,7 +442,6 @@
             }
         }
 
-        // FETCH 3: Tanpa Proxy
         async function loadTrack(spotifyUrl) {
             const statusDiv = document.getElementById('status');
             const playerBar = document.getElementById('playerBar');
@@ -449,7 +450,9 @@
 
             try {
                 const targetUrl = `https://zynfx.eu.org/api/spotify?url=${encodeURIComponent(spotifyUrl)}&apikey=${API_KEY}`;
-                const response = await fetch(targetUrl);
+                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+                
+                const response = await fetch(proxyUrl);
                 const data = await response.json();
 
                 if (data.status === 200 && data.result && data.result.metadata) {
